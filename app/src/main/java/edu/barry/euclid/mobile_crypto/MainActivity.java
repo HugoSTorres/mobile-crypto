@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.util.Log;
+
+// ciphers
+import javax.crypto.Cipher;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +16,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try {
+            Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            Log.d("ALGORITHM", c.getAlgorithm());
+        } catch (Exception e) {
+            Log.d("ERROR", "cannot load cipher");
+        }
     }
 
 
