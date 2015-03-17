@@ -11,7 +11,6 @@ import javax.crypto.Cipher;
 
 
 public class MainActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +21,10 @@ public class MainActivity extends Activity {
             Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
             // 3DES
-            Cipher c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
+            c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
 
             // Blowfish
-            Cipher c = Cipher.getInstance("Blowfish");
+            c = Cipher.getInstance("Blowfish");
             Log.d("ALGORITHM", c.getAlgorithm());
         } catch (Exception e) {
             Log.d("ERROR", "cannot load cipher");
