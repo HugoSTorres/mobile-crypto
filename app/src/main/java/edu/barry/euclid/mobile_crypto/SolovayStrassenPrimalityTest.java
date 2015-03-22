@@ -72,23 +72,23 @@ public class SolovayStrassenPrimalityTest {
         }
         return res % c;
     }
-    /** Main function **/
-    public static void main (String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("SolovayStrassen Primality Algorithm Test\n");
-        /** Make an object of SolovayStrassen class **/
-        SolovayStrassenPrimalityTest ss = new SolovayStrassenPrimalityTest();
-        /** Accept number **/
-        System.out.println("Enter number\n");
-        long num = scan.nextLong();
-        /** Accept number of iterations **/
-        System.out.println("\nEnter number of iterations");
-        int k = scan.nextInt();
-        /** check if prime **/
-        boolean prime = ss.isPrime(num, k);
-        if (prime)
-            System.out.println("\n"+ num +" is prime");
-        else
-            System.out.println("\n"+ num +" is composite");
-    }
+//    /** Main function **/
+//    public static void main (String[] args) {
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("SolovayStrassen Primality Algorithm Test\n");
+//        /** Make an object of SolovayStrassen class **/
+//        SolovayStrassenPrimalityTest ss = new SolovayStrassenPrimalityTest();
+//        /** Accept number **/
+//        System.out.println("Enter number\n");
+//        long num = scan.nextLong();
+//        /** Accept number of iterations **/
+//        System.out.println("\nEnter number of iterations");
+//        int k = scan.nextInt();
+//        /** check if prime **/
+//        boolean prime = ss.isPrime(num, k);
+//        if (prime)
+//            System.out.println("\n"+ num +" is prime");
+//        else
+//            System.out.println("\n"+ num +" is composite");
+//    }
 }

@@ -31,7 +31,7 @@ public class EncryptionHandler {
 
         // just checks to ensure that we have an algorithm ready
         if (!(method.equalsIgnoreCase(EncryptionHandler.AES) || method.equalsIgnoreCase(EncryptionHandler.TRIPLE_DES)
-                || method.equalsIgnoreCase(EncryptionHandler.BLOWFISH)){
+                || method.equalsIgnoreCase(EncryptionHandler.BLOWFISH))){
             Log.e("ENCRYPTION_HANDLER", "Wrong encryption method passed");
             return;
         }

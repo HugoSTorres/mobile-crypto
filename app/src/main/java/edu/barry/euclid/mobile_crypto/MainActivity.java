@@ -5,30 +5,36 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
-
-// ciphers
-import javax.crypto.Cipher;
-
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
+
+    Button btnEncrypt, btnPrimality;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            // AES
-            Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        this.btnPrimality = (Button) findViewById(R.id.btnPrimality);
+        this.btnEncrypt = (Button) findViewById(R.id.btnEnc);
 
-            // 3DES
-            c = Cipher.getInstance("DESede/CBC/PKCS5Padding");
+        btnEncrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            // Blowfish
-            c = Cipher.getInstance("Blowfish");
-            Log.d("ALGORITHM", c.getAlgorithm());
-        } catch (Exception e) {
-            Log.d("ERROR", "cannot load cipher");
-        }
+
+            }
+        });
+
+        btnPrimality.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
     }
 
 

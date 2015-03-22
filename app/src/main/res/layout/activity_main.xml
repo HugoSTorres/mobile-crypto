@@ -5,7 +5,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Encryption Algorithms"
+        android:id="@+id/btnEnc"
+        android:layout_marginTop="161dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Primality Tests"
+        android:id="@+id/btnPrimality"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/btnEnc"
+        android:layout_alignStart="@+id/btnEnc"
+        android:layout_alignEnd="@+id/btnEnc" />
 </RelativeLayout>
