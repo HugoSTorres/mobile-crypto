@@ -9,12 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.math.BigInteger;
+import java.util.Random;
 
 
 public class PrimalityTestsActivity extends Activity {
 
     Button btnRabin, btnStrassen;
     EditText txtTimes;
+
+    Battery battery;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,17 +31,19 @@ public class PrimalityTestsActivity extends Activity {
         this.btnStrassen = (Button) findViewById(R.id.btnSST);
         this.txtTimes = (EditText) findViewById(R.id.txtTimes2RunPrimality);
 
+        this.battery = new Battery(this);
+
         this.btnRabin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int times = getNumTimes();
+                runTests("MRT");
 
             }
         });
         this.btnStrassen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int times = getNumTimes();
+                runTests("SST");
 
             }
         });
@@ -51,6 +59,40 @@ public class PrimalityTestsActivity extends Activity {
         return times;
     }
 
+    /**
+     * Runs the test based on name
+     * @param name the name of the test: SST for Solovay Strassen and MRT for Miller Rabin
+     */
+    private void runTests(String name){
+        int times = getNumTimes();
+
+        float batteryPercentageBefore = battery.percentage();
+        long timeBefore = System.currentTimeMillis();
+
+        if (name.equals("MRT")) {
+            MillerRabinPrimalityTest test = new MillerRabinPrimalityTest();
+            for (int i = 0; i < times; i++) {
+                test.isPrime(new BigInteger(256, new Random()));
+            }
+        } else if (name.equals("SST")){
+            SolovayStrassenPrimalityTest test = new SolovayStrassenPrimalityTest();
+            for (int i = 0; i < times; i++){
+                test.isPrime((new Random()).nextInt());
+            }
+        }
+
+        float batteryPercentageAfter = battery.percentage();
+        long timeAfter = System.currentTimeMillis();
+
+        float batteryUsed = batteryPercentageBefore - batteryPercentageAfter;
+        long totalTime = timeAfter - timeBefore;
+
+        String text = "It took " + Long.toString(totalTime) + " seconds to run " + (name.equals("MRT") ? "Miller-Rabin Test" : "Solovay-Strassen Test")
+                + " algorithm, and it used " + Float.toString(batteryUsed) + "% of battery.";
+        Toast.makeText(getApplicationContext(), text,
+                Toast.LENGTH_LONG).show();
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

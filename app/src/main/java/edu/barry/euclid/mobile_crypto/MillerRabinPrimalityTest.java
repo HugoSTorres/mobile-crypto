@@ -9,13 +9,9 @@ import java.math.BigInteger;
 
 public class MillerRabinPrimalityTest {
     private static final int CERTAINTY = 1000000;
+    public MillerRabinPrimalityTest() {    }
 
-    BigInteger n;
-    public MillerRabinPrimalityTest(BigInteger number) {
-        this.n = number;
-    }
-
-    public Boolean isPrime(){
-        return this.n.isProbablePrime(CERTAINTY);
+    public Boolean isPrime(BigInteger n){
+        return n.isProbablePrime(CERTAINTY);
     }
 }

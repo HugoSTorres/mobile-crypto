@@ -12,9 +12,7 @@ import java.util.Random;
 public class SolovayStrassenPrimalityTest {
     private final static int ITERATIONS = 1;
 
-    private int n;
-    public SolovayStrassenPrimalityTest(int number){
-        this.n = number;
+    public SolovayStrassenPrimalityTest(){
     }
     private long Jacobi(long a, long b)  {
         if (b <= 0 || b % 2 == 0)
@@ -45,7 +43,7 @@ public class SolovayStrassenPrimalityTest {
         return 0;
     }
     /** Function to check if prime or not **/
-    public boolean isPrime()  {
+    public boolean isPrime(int n)  {
         /** base case **/
         if (n == 0 || n == 1)
             return false;
