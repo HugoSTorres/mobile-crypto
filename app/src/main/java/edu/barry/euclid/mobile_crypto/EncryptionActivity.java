@@ -5,36 +5,41 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
 
-    Button btnEncrypt, btnPrimality;
+public class EncryptionActivity extends Activity {
 
+    Button btnAES, btn3DES, btnBlowfish;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_encryption);
+        this.btnAES = (Button) findViewById(R.id.btnAES);
+        this.btn3DES = (Button) findViewById(R.id.btn3Des);
+        this.btnBlowfish = (Button) findViewById(R.id.btnBlowfish);
 
-        this.btnPrimality = (Button) findViewById(R.id.btnPrimality);
-        this.btnEncrypt = (Button) findViewById(R.id.btnEnc);
-
-        this.btnEncrypt.setOnClickListener(new View.OnClickListener() {
+        this.btnAES.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getBaseContext(), EncryptionActivity.class);
-                startActivity(myIntent);
+
 
             }
         });
 
-        this.btnPrimality.setOnClickListener(new View.OnClickListener() {
+        this.btn3DES.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getBaseContext(), EncryptionActivity.class);
-                startActivity(myIntent);
+
+
+            }
+        });
+
+        this.btnBlowfish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
 
             }
         });
@@ -44,7 +49,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_encryption, menu);
         return true;
     }
 

@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_encryption">EncryptionActivity</string>
+    <string name="title_activity_primality_tests">PrimalityTestsActivity</string>
+    <string name="times_to_run">Number of times to run:</string>
 </resources>

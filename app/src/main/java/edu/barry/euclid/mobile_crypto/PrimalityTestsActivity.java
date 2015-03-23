@@ -5,46 +5,56 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class MainActivity extends Activity {
 
-    Button btnEncrypt, btnPrimality;
+public class PrimalityTestsActivity extends Activity {
 
+    Button btnRabin, btnStrassen;
+    EditText txtTimes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_primality_tests);
 
-        this.btnPrimality = (Button) findViewById(R.id.btnPrimality);
-        this.btnEncrypt = (Button) findViewById(R.id.btnEnc);
+        //get GUI definitions
+        this.btnRabin = (Button) findViewById(R.id.btnMRT);
+        this.btnStrassen = (Button) findViewById(R.id.btnSST);
+        this.txtTimes = (EditText) findViewById(R.id.txtTimes2RunPrimality);
 
-        this.btnEncrypt.setOnClickListener(new View.OnClickListener() {
+        this.btnRabin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getBaseContext(), EncryptionActivity.class);
-                startActivity(myIntent);
+               int times = getNumTimes();
 
             }
         });
-
-        this.btnPrimality.setOnClickListener(new View.OnClickListener() {
+        this.btnStrassen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getBaseContext(), EncryptionActivity.class);
-                startActivity(myIntent);
+                int times = getNumTimes();
 
             }
         });
     }
+    /**
+     * Basically, just returns the value in the textfield.
+     */
+    private int getNumTimes(){
+        int times;
+        if (this.txtTimes.getText().toString().matches("")) times = 1; // set a default of 1 time
+        else times = Integer.getInteger(this.txtTimes.getText().toString());
 
+        return times;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_primality_tests, menu);
         return true;
     }
 
