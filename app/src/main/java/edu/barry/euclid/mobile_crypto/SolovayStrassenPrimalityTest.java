@@ -10,8 +10,13 @@ import java.util.Random;
 
 
 public class SolovayStrassenPrimalityTest {
-    /** Function to calculate jacobi (a/b) **/
-    public long Jacobi(long a, long b)  {
+    private final static int ITERATIONS = 1;
+
+    private int n;
+    public SolovayStrassenPrimalityTest(int number){
+        this.n = number;
+    }
+    private long Jacobi(long a, long b)  {
         if (b <= 0 || b % 2 == 0)
             return 0;
         long j = 1L;
@@ -40,7 +45,7 @@ public class SolovayStrassenPrimalityTest {
         return 0;
     }
     /** Function to check if prime or not **/
-    public boolean isPrime(long n, int iteration)  {
+    public boolean isPrime()  {
         /** base case **/
         if (n == 0 || n == 1)
             return false;
@@ -52,7 +57,7 @@ public class SolovayStrassenPrimalityTest {
             return false;
 
         Random rand = new Random();
-        for (int i = 0; i < iteration; i++)  {
+        for (int i = 0; i < ITERATIONS; i++)  {
             long r = Math.abs(rand.nextLong());
             long a = r % (n - 1) + 1;
             long jacobian = (n + Jacobi(a, n)) % n;
@@ -63,7 +68,7 @@ public class SolovayStrassenPrimalityTest {
         return true;
     }
     /** Function to calculate (a ^ b) % c **/
-    public long modPow(long a, long b, long c)  {
+    private long modPow(long a, long b, long c)  {
         long res = 1;
         for (int i = 0; i < b; i++)
         {
