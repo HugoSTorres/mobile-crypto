@@ -64,7 +64,7 @@ public class PrimalityTestsActivity extends Activity {
      * @param name the name of the test: SST for Solovay Strassen and MRT for Miller Rabin
      */
     private void runTests(String name){
-        int times = getNumTimes();
+        int times = this.getNumTimes();
 
         float batteryPercentageBefore = battery.percentage();
         long timeBefore = System.currentTimeMillis();

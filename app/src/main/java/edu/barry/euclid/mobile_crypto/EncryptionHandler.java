@@ -16,17 +16,17 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class EncryptionHandler {
     // Constant string definitions
-    private static final String AES = "AES";
-    private static final String TRIPLE_DES = "3DES";
-    private static final String BLOWFISH = "Blowfish";
+    public static final String AES = "AES";
+    public static final String TRIPLE_DES = "3DES";
+    public static final String BLOWFISH = "Blowfish";
 
     private final static String HEX = "0123456789ABCDEF";
 
     private Cipher cipher; // our cipher for the algorithm
-    private int keyLenght; //key length of the algorithm
+    private int keyLength; //key length of the algorithm
     private String method;
 
-    void EncryptionHandler(String method){
+    public EncryptionHandler(String method){
         this.method = method;
 
         // just checks to ensure that we have an algorithm ready
@@ -40,13 +40,13 @@ public class EncryptionHandler {
         try {
            if (method.equalsIgnoreCase(EncryptionHandler.AES)) {
                this.cipher = Cipher.getInstance("AES/CBC/PKCS5Padding"); // this gets AES
-               this.keyLenght = 128;
+               this.keyLength = 128;
            } else if (method.equalsIgnoreCase(EncryptionHandler.TRIPLE_DES)) {
                this.cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
-               this.keyLenght = 112; // we can change that, it doesn't matter
+               this.keyLength = 112; // we can change that, it doesn't matter
            } else if (method.equalsIgnoreCase(EncryptionHandler.BLOWFISH)) {
                this.cipher = Cipher.getInstance("Blowfish");
-               this.keyLenght = 128;
+               this.keyLength = 128;
            } else
                 throw new Exception(); //this should never happen
         } catch (Exception e){
@@ -77,7 +77,7 @@ public class EncryptionHandler {
             SecretKeySpec skeySpec = new SecretKeySpec(raw, this.method);
             cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
         }
-        byte[] encrypted = cipher.doFinal(clear);
+        byte[] encrypted = cipher.doFinal();
         return encrypted;
     }
 
@@ -85,7 +85,7 @@ public class EncryptionHandler {
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         sr.setSeed(seed);
-        kgen.init(this.keyLenght, sr); // 192 and 256 bits may not be available
+        kgen.init(this.keyLength, sr); // 192 and 256 bits may not be available
         SecretKey skey = kgen.generateKey();
         byte[] raw = skey.getEncoded();
         return raw;
