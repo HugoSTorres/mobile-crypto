@@ -19,6 +19,7 @@ public class PrimalityTestsActivity extends Activity {
 
     Button btnRabin, btnStrassen;
     EditText txtTimes;
+    TextView lblPrimality;
 
     Battery battery;
     @Override
@@ -30,6 +31,7 @@ public class PrimalityTestsActivity extends Activity {
         this.btnRabin = (Button) findViewById(R.id.btnMRT);
         this.btnStrassen = (Button) findViewById(R.id.btnSST);
         this.txtTimes = (EditText) findViewById(R.id.txtTimes2RunPrimality);
+        this.lblPrimality = (TextView) findViewById(R.id.lblPrimality);
 
         this.battery = new Battery(this);
 
@@ -53,8 +55,10 @@ public class PrimalityTestsActivity extends Activity {
      */
     private int getNumTimes(){
         int times;
-        if (this.txtTimes.getText().toString().matches("")) times = 1; // set a default of 1 time
-        else times = Integer.getInteger(this.txtTimes.getText().toString());
+        String timesStr = this.txtTimes.getText().toString();
+
+        if (timesStr.matches("")) times = 1; // set a default of 1 time
+        else times = Integer.parseInt(timesStr);
 
         return times;
     }
@@ -87,10 +91,11 @@ public class PrimalityTestsActivity extends Activity {
         float batteryUsed = batteryPercentageBefore - batteryPercentageAfter;
         long totalTime = timeAfter - timeBefore;
 
-        String text = "It took " + Long.toString(totalTime) + " seconds to run " + (name.equals("MRT") ? "Miller-Rabin Test" : "Solovay-Strassen Test")
-                + " algorithm, and it used " + Float.toString(batteryUsed) + "% of battery.";
+        String text = "It took " + Double.toString(totalTime/60.0) + " seconds to run " + (name.equals("MRT") ? "Miller-Rabin Test" : "Solovay-Strassen Test")
+                + " algorithm " + Integer.toString(times) + " times, and it used " + Float.toString(batteryUsed) + "% of battery.";
         Toast.makeText(getApplicationContext(), text,
                 Toast.LENGTH_LONG).show();
+        lblPrimality.setText(text);
 
     }
     @Override

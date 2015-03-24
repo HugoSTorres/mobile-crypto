@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
         this.btnPrimality.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getBaseContext(), EncryptionActivity.class);
+                Intent myIntent = new Intent(getBaseContext(), PrimalityTestsActivity.class);
                 startActivity(myIntent);
 
             }

@@ -23,7 +23,7 @@ public class EncryptionHandler {
     private final static String HEX = "0123456789ABCDEF";
 
     private Cipher cipher; // our cipher for the algorithm
-    private int keyLength; //key length of the algorithm
+    private int keyLength = 128; //key length of the algorithm
     private String method;
 
     public EncryptionHandler(String method){
@@ -40,13 +40,10 @@ public class EncryptionHandler {
         try {
            if (method.equalsIgnoreCase(EncryptionHandler.AES)) {
                this.cipher = Cipher.getInstance("AES/CBC/PKCS5Padding"); // this gets AES
-               this.keyLength = 128;
            } else if (method.equalsIgnoreCase(EncryptionHandler.TRIPLE_DES)) {
                this.cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
-               this.keyLength = 112; // we can change that, it doesn't matter
            } else if (method.equalsIgnoreCase(EncryptionHandler.BLOWFISH)) {
                this.cipher = Cipher.getInstance("Blowfish");
-               this.keyLength = 128;
            } else
                 throw new Exception(); //this should never happen
         } catch (Exception e){

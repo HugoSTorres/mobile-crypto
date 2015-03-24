@@ -44,4 +44,11 @@
         android:numeric="integer"
         android:text="10000"
         android:enabled="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblPrimality"
+        android:layout_below="@+id/btnSST"
+        android:layout_alignStart="@+id/btnSST" />
 </RelativeLayout>
