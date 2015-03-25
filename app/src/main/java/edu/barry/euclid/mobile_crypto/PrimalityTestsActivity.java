@@ -91,7 +91,7 @@ public class PrimalityTestsActivity extends Activity {
         float batteryUsed = batteryPercentageBefore - batteryPercentageAfter;
         long totalTime = timeAfter - timeBefore;
 
-        String text = "It took " + Double.toString(totalTime/60.0) + " seconds to run " + (name.equals("MRT") ? "Miller-Rabin Test" : "Solovay-Strassen Test")
+        String text = "It took " + Double.toString(totalTime/1000.0) + " seconds to run " + (name.equals("MRT") ? "Miller-Rabin Test" : "Solovay-Strassen Test")
                 + " algorithm " + Integer.toString(times) + " times, and it used " + Float.toString(batteryUsed) + "% of battery.";
         Toast.makeText(getApplicationContext(), text,
                 Toast.LENGTH_LONG).show();
