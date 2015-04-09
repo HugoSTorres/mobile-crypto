@@ -23,4 +23,14 @@
         android:layout_below="@+id/btnEnc"
         android:layout_alignStart="@+id/btnEnc"
         android:layout_alignEnd="@+id/btnEnc" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Random Numbers"
+        android:id="@+id/btnPRNG"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/btnPrimality"
+        android:layout_alignStart="@+id/btnPrimality"
+        android:layout_alignEnd="@+id/btnPrimality" />
 </RelativeLayout>

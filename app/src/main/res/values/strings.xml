@@ -6,4 +6,5 @@
     <string name="title_activity_encryption">EncryptionActivity</string>
     <string name="title_activity_primality_tests">PrimalityTestsActivity</string>
     <string name="times_to_run">Number of times to run:</string>
+    <string name="title_activity_prng">PRNGActivity</string>
 </resources>

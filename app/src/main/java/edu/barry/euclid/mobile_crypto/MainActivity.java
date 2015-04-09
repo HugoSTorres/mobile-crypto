@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    Button btnEncrypt, btnPrimality;
+    Button btnEncrypt, btnPrimality, btnPRNG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
 
         this.btnPrimality = (Button) findViewById(R.id.btnPrimality);
         this.btnEncrypt = (Button) findViewById(R.id.btnEnc);
+        this.btnPRNG = (Button) findViewById(R.id.btnPRNG);
 
         this.btnEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +35,15 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(getBaseContext(), PrimalityTestsActivity.class);
+                startActivity(myIntent);
+
+            }
+        });
+
+        this.btnPRNG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getBaseContext(), PRNGActivity.class);
                 startActivity(myIntent);
 
             }
