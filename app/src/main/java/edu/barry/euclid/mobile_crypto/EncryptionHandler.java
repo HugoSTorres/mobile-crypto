@@ -19,6 +19,7 @@ public class EncryptionHandler {
     public static final String AES = "AES";
     public static final String TRIPLE_DES = "3DES";
     public static final String BLOWFISH = "Blowfish";
+    public static final String RC4 = "ARC4";
 
     private final static String HEX = "0123456789ABCDEF";
 
@@ -31,7 +32,7 @@ public class EncryptionHandler {
 
         // just checks to ensure that we have an algorithm ready
         if (!(method.equalsIgnoreCase(EncryptionHandler.AES) || method.equalsIgnoreCase(EncryptionHandler.TRIPLE_DES)
-                || method.equalsIgnoreCase(EncryptionHandler.BLOWFISH))){
+                || method.equalsIgnoreCase(EncryptionHandler.BLOWFISH) || method.equalsIgnoreCase(EncryptionHandler.RC4))){
             Log.e("ENCRYPTION_HANDLER", "Wrong encryption method passed");
             return;
         }
@@ -44,6 +45,8 @@ public class EncryptionHandler {
                this.cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
            } else if (method.equalsIgnoreCase(EncryptionHandler.BLOWFISH)) {
                this.cipher = Cipher.getInstance("Blowfish");
+           } else if (method.equalsIgnoreCase(EncryptionHandler.RC4)) {
+               this.cipher = Cipher.getInstance("ARC4");
            } else
                 throw new Exception(); //this should never happen
         } catch (Exception e){

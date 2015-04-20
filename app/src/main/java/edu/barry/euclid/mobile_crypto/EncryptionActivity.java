@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class EncryptionActivity extends Activity {
 
-    Button btnAES, btn3DES, btnBlowfish;
+    Button btnAES, btn3DES, btnBlowfish, btnRC4;
     EditText txtTimes;
     TextView lblEncryption;
 
@@ -29,6 +29,7 @@ public class EncryptionActivity extends Activity {
         this.btnAES = (Button) findViewById(R.id.btnAES);
         this.btn3DES = (Button) findViewById(R.id.btn3Des);
         this.btnBlowfish = (Button) findViewById(R.id.btnBlowfish);
+        this.btnRC4 = (Button) findViewById(R.id.btnRC4);
         this.txtTimes = (EditText) findViewById(R.id.txtTimes2RunEncryption);
         this.lblEncryption = (TextView) findViewById(R.id.lblEncryption);
 
@@ -54,6 +55,14 @@ public class EncryptionActivity extends Activity {
             @Override
             public void onClick(View v) {
                 performEncryption(EncryptionHandler.BLOWFISH);
+
+            }
+        });
+
+        this.btnRC4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performEncryption(EncryptionHandler.RC4);
 
             }
         });

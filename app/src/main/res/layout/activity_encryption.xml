@@ -56,10 +56,18 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/textView" />
 
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Run RC4 Algorithm"
+        android:id="@+id/btnRC4"
+        android:layout_below="@+id/btnBlowfish"
+        android:layout_alignStart="@+id/btnBlowfish" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lblEncryption"
-        android:layout_below="@+id/btnBlowfish"
-        android:layout_alignStart="@+id/btnBlowfish" />
+        android:layout_below="@+id/btnRC4"
+        android:layout_alignStart="@+id/btnRC4" />
 </RelativeLayout>

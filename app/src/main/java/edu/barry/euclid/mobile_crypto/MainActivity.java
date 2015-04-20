@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.security.Provider;
+import java.security.Security;
+
 public class MainActivity extends Activity {
 
     Button btnEncrypt, btnPrimality, btnPRNG;
@@ -17,6 +20,16 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Provider[] providers = Security.getProviders();
+        for (Provider provider : providers) {
+            for (Object entry : provider.keySet()) {
+                String name = String.valueOf(entry);
+                if (name.startsWith("Cipher")) {
+                    Log.d("Cipher", "Supports: " + name.substring(7));
+                }
+            }
+        }
 
         this.btnPrimality = (Button) findViewById(R.id.btnPrimality);
         this.btnEncrypt = (Button) findViewById(R.id.btnEnc);
