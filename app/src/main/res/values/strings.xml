@@ -7,4 +7,7 @@
     <string name="title_activity_primality_tests">PrimalityTestsActivity</string>
     <string name="times_to_run">Number of times to run:</string>
     <string name="title_activity_prng">PRNGActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

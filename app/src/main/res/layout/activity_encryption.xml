@@ -70,4 +70,5 @@
         android:id="@+id/lblEncryption"
         android:layout_below="@+id/btnRC4"
         android:layout_alignStart="@+id/btnRC4" />
+
 </RelativeLayout>
